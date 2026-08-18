@@ -2,10 +2,111 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Pulse - AI Emotion Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>app is working</h1>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">🧠</span>
+                    <span class="logo-text">Emotion Pulse</span>
+                </h1>
+                <p class="tagline">Detect emotions in text with AI precision</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="input-card">
+                    <label for="emotion-input" class="input-label">What's on your mind?</label>
+                    <textarea 
+                        id="emotion-input" 
+                        class="emotion-textarea" 
+                        placeholder="Share your thoughts or feelings... (1-2000 characters)"
+                        maxlength="2000"
+                        rows="5"
+                    ></textarea>
+                    <div class="input-footer">
+                        <span class="char-count"><span id="char-current">0</span>/2000</span>
+                        <button id="analyze-btn" class="btn btn-primary">
+                            <span class="btn-text">Analyze Emotion</span>
+                            <span class="btn-loader"></span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Message -->
+            <div id="error-message" class="error-container" style="display: none;">
+                <div class="error-content">
+                    <span class="error-icon">⚠️</span>
+                    <p id="error-text"></p>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <section id="result-section" class="result-section" style="display: none;">
+                <div class="result-card">
+                    <!-- Main Emotion Display -->
+                    <div class="emotion-result">
+                        <div class="emotion-emoji" id="emotion-emoji"></div>
+                        <div class="emotion-info">
+                            <p class="emotion-label">Your emotion is</p>
+                            <h2 class="emotion-name" id="emotion-name"></h2>
+                            <div class="confidence-meter">
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" id="confidence-fill"></div>
+                                </div>
+                                <p class="confidence-text">
+                                    <span id="confidence-percent">0</span>% confidence
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="divider"></div>
+
+                    <!-- All Emotions Breakdown -->
+                    <div class="emotions-breakdown">
+                        <h3 class="breakdown-title">Emotional Spectrum</h3>
+                        <div class="emotions-list" id="emotions-list"></div>
+                    </div>
+
+                    <!-- Original Text -->
+                    <div class="original-text-section">
+                        <p class="text-label">Analyzed text:</p>
+                        <p class="text-content" id="analyzed-text"></p>
+                    </div>
+                </div>
+
+                <!-- New Analysis Button -->
+                <button id="new-analysis-btn" class="btn btn-secondary">
+                    Analyze Another
+                </button>
+            </section>
+
+            <!-- Empty State -->
+            <section id="empty-state" class="empty-state">
+                <div class="empty-content">
+                    <p class="empty-icon">✨</p>
+                    <p class="empty-text">Enter some text to begin analyzing emotions</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by BiGRU Deep Learning Model • Built with FastAPI</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
 </body>
 </html>
